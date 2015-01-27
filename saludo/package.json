@@ -1,0 +1,16 @@
+{
+  "name": "saludo",
+  "version": "0.1.0",
+  "description": "programa que pregunta nombre y apellido y luego saluda y junta el nombre con el apellido",
+  "main": "saludo.js",
+  "scripts": {
+    "test": "node --harmony $(wich nodeunit) test/"
+  },
+  "keywords": [
+    "saludo",
+    "nombre",
+    "apellido"
+  ],
+  "author": "jonas",
+  "license": "BSD-2-Clause"
+}
