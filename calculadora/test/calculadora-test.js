@@ -1,5 +1,5 @@
 "use strict";
-const calculadoraModule=require("./../calculadoraModule.js");
+const calculadoraModule=require("./../modules/calculadoraModule.js");
 exports.testSumar=function(test){
 	test.expect(1);
 //arrange
