@@ -1,17 +1,13 @@
 "use strict";
 
 const calculadora=require("./modules/calculadoraModule.js"),
-      validaciones=require("./modules/validacionesModule.js"),
-      programa=require("./calculadora.js");
+      validaciones=require("./modules/validacionesModule.js");
+      
 
-exports.jonasInput=function(opcion){
-let opcionEntrada=opcion,
-    a=process.argv[3],
-    b=process.argv[4],
+let opcion=process.argv[2],
+    a=parseInt(process.argv[3]),
+    b=parseInt(process.argv[4]),
     opciones=["--sumar","--restar","--multiplicar","--dividir","--help"];
-    programa.jonasProbarOpcion(opciones,opcionEntrada)
-}
-
 
 function help(){
 	console.log("uso:");
@@ -19,30 +15,25 @@ function help(){
 	console.log("opciones: sumar, restar, multiplicar, dividir");
 	console.log("a y b deben ser valores numericos");
 }
-
-exports.jonasProbarOpcion=function(opciones,opcionEntrada){
-	var opciones=opciones;
-	var opcion=opcionEntrada;
-	var jonasResult=validaciones.validarOpcion(opciones,opcion);
-	if(!jonasResult)
+	if(!validaciones.validarOpcion(opciones,opcion))
 	{
 		  help();
-		  return;
+		  process.exit(1);//usuario selecciona una opcion que no esta en la lista.
 	}
-}
 
-if(programa.jonasProbarOpcion.opcion!=="--help")
+if(opcion!=="--help")
 {
-	if(!validaciones.validarNumero(programa.jonasInput.a)||!validaciones.validarNumero(programa.jonasInput.b))
+	if(!validaciones.validarNumero(a)||!validaciones.validarNumero(b))
 	{
  	  help();
-	  return;
+	  process.exit(2);//el usuario puso un valor no numérico.
 	}
 }
 
-switch(programa.jonasInput.opcionEntrada){
+switch(opcion){
 	case "--help":
 	help();
+	process.exit(0);//aquI se termina el programa exitosamente.
 	break;
 	case "--sumar":
 	var total= calculadora.sumar(a,b);
@@ -61,4 +52,5 @@ switch(programa.jonasInput.opcionEntrada){
         console.log(total);
         break;
 }
+process.exit(0);//termina el programa bien.
 

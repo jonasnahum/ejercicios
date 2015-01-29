@@ -4,7 +4,7 @@
   "description": "modulo que tiene las operaciones basicas de una calculadora",
   "main": "calculadora.js",
   "scripts": {
-    "test": "node --harmony $(wich nodeunit) test/"
+    "test": "nodejs --harmony $(which nodeunit) test/"
   },
   "keywords": [
     "calculadora",
